@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tec. Arjun Pandey | X-Ray Technician & ITF Kavre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+<!-- ============================================================
+  ██████████████████████████████████████████████████████████
+  ██  EASY EDIT ZONE — ALL YOUR CUSTOMISATION IS HERE     ██
+  ██  You do NOT need to touch any code below CONFIG      ██
+  ██████████████████████████████████████████████████████████
+  ============================================================ -->
+
+<script>
+const CONFIG = {
+
+  /* ─────────────────────────────────────────────────────────
+     LOGO
+     Paste a GitHub raw image URL or any direct .jpg/.png URL
+     Example: "https://raw.githubusercontent.com/USER/REPO/main/logo.png"
+  ───────────────────────────────────────────────────────── */
+  logo: "",
+
+  /* ─────────────────────────────────────────────────────────
+     PROFILE PHOTO (shown in hero card)
+     Paste a GitHub raw .jpg/.png URL
+  ───────────────────────────────────────────────────────── */
+  profilePhoto: "",
+
+  /* ─────────────────────────────────────────────────────────
+     HOSPITAL COORDINATES
+     Change lat/lng to update the embedded map and links
+     Current: Scheer Memorial Hospital, Banepa
+  ───────────────────────────────────────────────────────── */
+  hospitalLat:  "27.6337",
+  hospitalLng:  "85.5218",
+
+  /* ─────────────────────────────────────────────────────────
+     SOCIAL MEDIA LINKS
+     Paste full URLs — leave "" if not ready yet
+  ───────────────────────────────────────────────────────── */
+  facebook:  "",   /* e.g. "https://facebook.com/arjunpandey" */
+  instagram: "",   /* e.g. "https://instagram.com/arjunpandey" */
+  tiktok:    "",   /* e.g. "https://tiktok.com/@arjunpandey"  */
+
+  /* ─────────────────────────────────────────────────────────
+     GALLERY PHOTOS
+     Add GitHub raw .jpg/.png URLs — leave "" for empty slots
+     You can add as many rows as you want
+  ───────────────────────────────────────────────────────── */
+  photos: [
+    "",   /* Photo 1 */
+    "",   /* Photo 2 */
+    "",   /* Photo 3 */
+    "",   /* Photo 4 */
+    "",   /* Photo 5 */
+    "",   /* Photo 6 */
+  ],
+
+  /* ─────────────────────────────────────────────────────────
+     GALLERY VIDEOS
+     Paste YouTube links or direct video URLs
+  ───────────────────────────────────────────────────────── */
+  videos: [
+    "",   /* Video 1 */
+    "",   /* Video 2 */
+    "",   /* Video 3 */
+  ],
+
+  /* ─────────────────────────────────────────────────────────
+     PRESENTATIONS
+     Change "title" and paste link for each presentation
+     (Google Slides, Canva, PDF, etc.)
+  ───────────────────────────────────────────────────────── */
+  presentations: [
+    { title: "Presentation 1",  link: "" },
+    { title: "Presentation 2",  link: "" },
+    { title: "Presentation 3",  link: "" },
+    { title: "Presentation 4",  link: "" },
+    { title: "Presentation 5",  link: "" },
+    { title: "Presentation 6",  link: "" },
+    { title: "Presentation 7",  link: "" },
+    { title: "Presentation 8",  link: "" },
+    { title: "Presentation 9",  link: "" },
+    { title: "Presentation 10", link: "" },
+  ],
+
+};
+/* ════════════════════════════════════════════════════════
+   END CONFIG — do not edit below this line
+   ════════════════════════════════════════════════════════ */
+</script>
+
+<style>
+:root{
+  --navy:#0a0e1a;--deep:#060910;--steel:#1a2235;
+  --ice:#c8dff5;--gold:#c9a84c;--gold-light:#e8c96e;
+  --red:#c0392b;--red-glow:#e74c3c;
+  --white:#f0f4ff;--muted:#7a8aaa;
+  --glass:rgba(255,255,255,.04);--gb:rgba(200,223,245,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--deep);color:var(--white);font-family:'Rajdhani',sans-serif;overflow-x:hidden;cursor:none;}
+#cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+#cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .15s,top .15s;}
+#loader{position:fixed;inset:0;background:var(--deep);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s;}
+#loader.hide{opacity:0;visibility:hidden;}
+.ld-name{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--gold);letter-spacing:.15em;text-align:center;line-height:1.3;}
+.ld-sub{font-size:.65rem;color:var(--muted);letter-spacing:.4em;text-transform:uppercase;margin-top:4px;}
+.ld-bar{width:180px;height:1px;background:rgba(201,168,76,.15);margin-top:26px;overflow:hidden;}
+.ld-fill{height:100%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:ldF 1.8s ease forwards;}
+@keyframes ldF{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.ld-txt{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.35em;color:rgba(201,168,76,.45);margin-top:12px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(6,9,16,.95),transparent);transition:background .4s;}
+nav.scrolled{background:rgba(6,9,16,.97);border-bottom:1px solid var(--gb);}
+.nav-logo{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.15em;color:var(--gold);display:flex;align-items:center;gap:10px;text-decoration:none;}
+#nlogo{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);background:var(--steel);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+#nlogo img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{font-size:.78rem;letter-spacing:.13em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:7px 18px;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+.nav-cta:hover{background:var(--gold);color:var(--deep);}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0 48px;}
+.h-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(26,34,53,.8),var(--deep) 70%);}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,223,245,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(200,223,245,.022) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);}
+.h-scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.22),transparent);animation:scan 5s linear infinite;top:0;}
+@keyframes scan{from{top:0}to{top:100%}}
+.h-content{position:relative;z-index:2;max-width:920px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%;}
+.h-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gb);padding:6px 16px;font-size:.67rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;margin-bottom:22px;background:var(--glass);}
+.h-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pd 2s infinite;}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.h-name{font-family:'Cinzel',serif;font-size:2.9rem;font-weight:700;line-height:1.05;letter-spacing:.04em;background:linear-gradient(135deg,var(--white) 0%,var(--ice) 50%,var(--gold-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:sU .9s .3s forwards;}
+.h-role{font-size:.93rem;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-top:11px;margin-bottom:7px;font-weight:500;opacity:0;animation:sU .9s .5s forwards;}
+.h-sub{font-size:.88rem;color:var(--muted);letter-spacing:.05em;line-height:1.75;opacity:0;animation:sU .9s .7s forwards;}
+.h-sub span{color:var(--ice);}
+@keyframes sU{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.h-btns{display:flex;gap:13px;margin-top:32px;flex-wrap:wrap;opacity:0;animation:sU .9s .9s forwards;}
+.btn-g{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--deep);padding:11px 26px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .3s;}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(201,168,76,.28);}
+.btn-o{background:transparent;color:var(--ice);padding:11px 26px;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--gb);transition:all .3s;}
+.btn-o:hover{border-color:var(--ice);}
+.h-right{display:flex;justify-content:center;opacity:0;animation:fI 1.2s .4s forwards;}
+@keyframes fI{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.pcard{position:relative;width:285px;}
+.pcard-in{width:100%;aspect-ratio:.78;background:var(--steel);border:1px solid var(--gb);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pcard-in img{width:100%;height:100%;object-fit:cover;}
+.pph{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(200,223,245,.18);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:20px;}
+.pcard::before{content:'';position:absolute;top:10px;left:10px;right:-10px;bottom:-10px;border:1px solid rgba(201,168,76,.16);z-index:-1;}
+.pcard-badge{position:absolute;bottom:-13px;left:14px;right:14px;background:linear-gradient(135deg,var(--steel),var(--navy));border:1px solid var(--gb);padding:10px 13px;display:flex;justify-content:space-between;}
+.bl{font-size:.58rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;}
+.bv{font-family:'Cinzel',serif;font-size:.78rem;color:var(--gold);}
+section{padding:92px 48px;position:relative;}
+.sh{text-align:center;margin-bottom:56px;}
+.se{font-size:.6rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:block;}
+.st{font-family:'Cinzel',serif;font-size:2rem;font-weight:600;color:var(--white);letter-spacing:.05em;}
+.sr{width:40px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:13px auto 0;}
+#about{background:var(--navy);}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:930px;margin:0 auto;}
+.ac{background:var(--glass);border:1px solid var(--gb);padding:30px;position:relative;overflow:hidden;transition:transform .4s,border-color .4s;}
+.ac:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.28);}
+.ac::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
+.ac:hover::before{opacity:1;}
+.ai{width:42px;height:42px;border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--gold);}
+.at{font-family:'Cinzel',serif;font-size:1rem;color:var(--white);margin-bottom:7px;letter-spacing:.04em;}
+.ab{font-size:.9rem;color:var(--muted);line-height:1.78;}
+.ab a{color:var(--ice);text-decoration:none;transition:color .3s;}
+.ab a:hover{color:var(--gold);}
+#map-sec{background:var(--deep);padding:0 48px 72px;}
+.mw{max-width:930px;margin:0 auto;border:1px solid var(--gb);overflow:hidden;}
+.mw iframe{width:100%;height:380px;border:none;display:block;filter:saturate(.65) brightness(.82);}
+.mbar{background:var(--navy);border-top:1px solid var(--gb);padding:13px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.mcoords{font-size:.75rem;color:var(--muted);letter-spacing:.07em;}
+.mcoords span{color:var(--gold);}
+.mopen{background:var(--gold);color:var(--deep);padding:7px 17px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+.mopen:hover{background:var(--gold-light);}
+#martial{background:linear-gradient(180deg,var(--deep) 0%,var(--navy) 50%,var(--deep) 100%);overflow:hidden;}
+.mabg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cinzel',serif;font-size:18vw;font-weight:700;color:rgba(192,57,43,.03);white-space:nowrap;pointer-events:none;}
+.mc{max-width:730px;margin:0 auto;background:linear-gradient(135deg,rgba(192,57,43,.08),rgba(26,34,53,.5));border:1px solid rgba(192,57,43,.2);padding:44px;position:relative;}
+.mc::after{content:'';position:absolute;top:-1px;left:30px;right:30px;height:2px;background:linear-gradient(90deg,transparent,var(--red-glow),transparent);}
+.mb{display:inline-flex;align-items:center;gap:7px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.25);padding:5px 15px;margin-bottom:18px;font-size:.66rem;letter-spacing:.27em;color:var(--red-glow);text-transform:uppercase;}
+.schip{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(192,57,43,.16),rgba(192,57,43,.03));border:1px solid rgba(192,57,43,.36);padding:9px 17px;margin-bottom:16px;}
+.schip-t{font-family:'Cinzel',serif;font-size:.86rem;color:var(--red-glow);letter-spacing:.09em;}
+.mt{font-family:'Cinzel',serif;font-size:1.65rem;color:var(--white);margin-bottom:5px;letter-spacing:.04em;}
+.ms{font-size:.86rem;color:var(--muted);margin-bottom:20px;letter-spacing:.04em;}
+.mbody{color:var(--muted);font-size:.91rem;line-height:1.82;max-width:530px;}
+.mtags{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px;}
+.mtag{background:rgba(192,57,43,.09);border:1px solid rgba(192,57,43,.18);padding:5px 12px;font-size:.7rem;letter-spacing:.09em;color:var(--red-glow);text-transform:uppercase;}
+#gallery{background:var(--navy);}
+.gtabs{display:flex;border:1px solid var(--gb);max-width:340px;margin:0 auto 34px;}
+.tb{flex:1;padding:10px;background:transparent;border:none;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.tb.active{background:var(--gold);color:var(--deep);}
+.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px;max-width:930px;margin:0 auto;}
+.gi{aspect-ratio:1;background:var(--steel);border:1px solid var(--gb);overflow:hidden;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.gi:hover .gov{opacity:1;}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.gi:hover img{transform:scale(1.07);}
+.gov{position:absolute;inset:0;background:rgba(201,168,76,.1);border:2px solid rgba(201,168,76,.32);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
+.gempty{display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(200,223,245,.13);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px;max-width:930px;margin:0 auto;}
+.vi{aspect-ratio:16/9;background:var(--steel);border:1px solid var(--gb);overflow:hidden;}
+.vi iframe,.vi video{width:100%;height:100%;border:none;}
+.vempty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:rgba(200,223,245,.13);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;width:100%;height:100%;}
+.ghint{text-align:center;margin-top:18px;font-size:.7rem;letter-spacing:.13em;color:rgba(200,223,245,.18);text-transform:uppercase;}
+.hidden{display:none!important;}
+#presentations{background:var(--deep);}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:15px;max-width:930px;margin:0 auto;}
+.pc{background:var(--glass);border:1px solid var(--gb);padding:26px 22px;display:flex;flex-direction:column;gap:12px;transition:all .4s;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s;}
+.pc:hover{border-color:rgba(201,168,76,.26);transform:translateY(-3px);}
+.pc:hover::before{opacity:1;}
+.pn{font-family:'Cinzel',serif;font-size:2.1rem;font-weight:700;color:rgba(201,168,76,.11);line-height:1;}
+.ptitle{font-family:'Cinzel',serif;font-size:.92rem;color:var(--white);letter-spacing:.05em;}
+.plw{margin-top:auto;}
+.purl{display:block;font-size:.72rem;letter-spacing:.08em;color:var(--muted);word-break:break-all;text-decoration:none;transition:color .3s;}
+.purl:hover{color:var(--gold);}
+.pnl{font-size:.7rem;letter-spacing:.12em;color:rgba(200,223,245,.16);text-transform:uppercase;}
+.popen{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:.7rem;letter-spacing:.11em;color:var(--gold);text-decoration:none;text-transform:uppercase;border-bottom:1px solid rgba(201,168,76,.28);padding-bottom:2px;transition:border-color .3s;}
+.popen:hover{border-color:var(--gold);}
+#social-sec{background:var(--navy);padding:56px 48px;border-top:1px solid var(--gb);border-bottom:1px solid var(--gb);}
+.srow{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;max-width:660px;margin:28px auto 0;}
+.sc{flex:1;min-width:155px;background:var(--glass);border:1px solid var(--gb);padding:22px 14px;display:flex;flex-direction:column;align-items:center;gap:9px;text-decoration:none;transition:all .4s;}
+.sc.fb:hover{border-color:#1877f2;background:rgba(24,119,242,.06);}
+.sc.ig:hover{border-color:#e1306c;background:rgba(225,48,108,.06);}
+.sc.tt:hover{border-color:#69c9d0;background:rgba(105,201,208,.06);}
+.sn{font-size:.86rem;color:var(--white);font-weight:600;letter-spacing:.04em;}
+.surl{font-size:.66rem;color:var(--muted);word-break:break-all;text-align:center;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sph{font-size:.63rem;color:rgba(200,223,245,.17);letter-spacing:.1em;text-transform:uppercase;}
+#contact{background:var(--deep);}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:720px;margin:0 auto;}
+.ci{background:var(--glass);border:1px solid var(--gb);padding:22px;display:flex;gap:13px;align-items:flex-start;transition:all .3s;}
+.ci:hover{border-color:rgba(201,168,76,.26);transform:translateY(-2px);}
+.cico{color:var(--gold);flex-shrink:0;margin-top:2px;}
+.clabel{font-size:.6rem;letter-spacing:.27em;color:var(--muted);text-transform:uppercase;margin-bottom:4px;}
+.cval{font-size:.93rem;color:var(--white);letter-spacing:.04em;}
+.cval a{color:var(--ice);text-decoration:none;transition:color .3s;}
+.cval a:hover{color:var(--gold);}
+footer{background:var(--deep);padding:34px 48px;border-top:1px solid var(--gb);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.ft{font-size:.7rem;letter-spacing:.09em;color:var(--muted);}
+.ft span{color:var(--gold);}
+.fb2{font-family:'Cinzel',serif;font-size:.78rem;color:var(--muted);letter-spacing:.14em;}
+.wa{position:fixed;bottom:26px;right:26px;z-index:500;width:52px;height:52px;background:linear-gradient(135deg,#25d366,#128C7E);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.28);text-decoration:none;transition:transform .3s;}
+.wa:hover{transform:scale(1.1);}
+.wap{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,.32);animation:wapulse 2s infinite;}
+@keyframes wapulse{from{transform:scale(1);opacity:.75}to{transform:scale(1.44);opacity:0}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  nav{padding:13px 18px;}
+  .nav-links{display:none;}
+  section{padding:58px 18px;}
+  #hero{padding:0 18px;}
+  #map-sec{padding:0 18px 54px;}
+  #social-sec{padding:44px 18px;}
+  footer{padding:26px 18px;}
+  .h-content{grid-template-columns:1fr;gap:34px;text-align:center;}
+  .h-name{font-size:2rem;}
+  .h-right{display:none;}
+  .ag,.cg{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-name">TEC. ARJUN<br><span style="font-size:1rem;letter-spacing:.3em;color:var(--muted)">PANDEY</span></div>
+  <div class="ld-sub">X-Ray Technician · ITF Kavre</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-txt">Loading Profile</div>
+</div>
+
+<!-- WhatsApp Float -->
+<a class="wa" href="https://wa.me/9779841537681" target="_blank">
+  <div class="wap"></div>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <div id="nlogo">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,.45)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    TEC. ARJUN PANDEY
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Hospital</a></li>
+    <li><a href="#martial">ITF Kavre</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#presentations">Presentations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/9779841537681" target="_blank">WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-bg"></div><div class="h-grid"></div><div class="h-scan"></div>
+  <div class="h-content">
+    <div>
+      <div class="h-tag"><span class="h-dot"></span>Available for Consultations</div>
+      <h1 class="h-name">X-Ray Technician<br>Arjun Pandey</h1>
+      <div class="h-role">Radiographic Specialist</div>
+      <div class="h-sub">Senior X-Ray Technician at <span>Scheer Memorial Hospital</span>, Banepa<br>Secretary, Kavre ITF Taekwondo Academy</div>
+      <div class="h-btns">
+        <a href="https://wa.me/9779841537681" target="_blank" class="btn-g">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="#gallery" class="btn-o">Gallery ↓</a>
+      </div>
+    </div>
+    <div class="h-right">
+      <div class="pcard">
+        <div class="pcard-in" id="hpa">
+          <div class="pph" id="hph">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(200,223,245,.18)" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Set profilePhoto in CONFIG</span>
+          </div>
+        </div>
+        <div class="pcard-badge"><div><div class="bl">Specialty</div><div class="bv">Radiology</div></div><div><div class="bl">Hospital</div><div class="bv">Scheer</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sh reveal"><span class="se">Professional</span><h2 class="st">Hospital & Practice</h2><div class="sr"></div></div>
+  <div class="ag">
+    <div class="ac reveal">
+      <div class="ai"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+      <div class="at">Scheer Memorial Hospital</div>
+      <div class="ab">Premier healthcare in Kavrepalanchok district with advanced diagnostic and medical services.<br><br>📍 JGMG+9WQ, Banepa 45210, Nepal</div>
+    </div>
+    <div class="ac reveal">
+      <div class="ai"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+      <div class="at">X-Ray Radiography</div>
+      <div class="ab">Specialized in diagnostic radiography — imaging, patient positioning, radiation safety, and high-quality image production for accurate clinical diagnosis.<br><br>📞 <a href="tel:+9779841537681">+977 9841537681</a> &nbsp;·&nbsp; 💬 <a href="https://wa.me/9779841537681" target="_blank">WhatsApp</a></div>
+    </div>
+    <div class="ac reveal">
+      <div class="ai"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="at">Expertise & Skills</div>
+      <div class="ab">• Diagnostic X-Ray Imaging<br>• Chest & Skeletal Radiography<br>• Radiation Safety Protocols<br>• Patient Care & Positioning<br>• Digital Radiography Systems<br>• Emergency Imaging Support</div>
+    </div>
+    <div class="ac reveal">
+      <div class="ai"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="at">Activities & Updates</div>
+      <div class="ab">Documenting professional milestones, hospital events, community health programs, and ITF martial arts activities from Kavre. See gallery for latest photos and videos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div id="map-sec">
+  <div class="mw reveal">
+    <iframe id="mapframe" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mbar">
+      <div class="mcoords">📍 Scheer Memorial Hospital &nbsp;|&nbsp; Lat: <span id="dlat"></span> &nbsp; Lng: <span id="dlng"></span></div>
+      <a class="mopen" id="mlink" href="#" target="_blank">Open in Google Maps ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MARTIAL ARTS -->
+<section id="martial">
+  <div class="mabg">ITF</div>
+  <div class="sh reveal"><span class="se">Martial Arts</span><h2 class="st">Kavre ITF Academy</h2><div class="sr" style="background:linear-gradient(90deg,var(--red-glow),transparent)"></div></div>
+  <div class="mc reveal">
+    <div class="mb"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>International Taekwondo Federation</div>
+    <div class="schip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red-glow)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="schip-t">Secretary — Kavre ITF Academy</span></div>
+    <div class="mt">Kavre ITF Taekwondo Academy</div>
+    <div class="ms">International Taekwondo Federation — Kavrepalanchok District Chapter</div>
+    <div class="mbody">As the elected Secretary of Kavre ITF Academy, Arjun Pandey plays a pivotal role in organizing competitions, training camps, belt examinations, and promoting ITF-style Taekwondo across Kavrepalanchok district — bridging medicine and martial arts with discipline and dedication.</div>
+    <div class="mtags"><div class="mtag">ITF Taekwondo</div><div class="mtag">Kavrepalanchok</div><div class="mtag">Patterns & Sparring</div><div class="mtag">District Competitions</div><div class="mtag">Youth Development</div><div class="mtag">Secretary</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sh reveal"><span class="se">Media</span><h2 class="st">Gallery & Updates</h2><div class="sr"></div></div>
+  <div class="gtabs reveal"><button class="tb active" onclick="showTab('p',this)">Photos</button><button class="tb" onclick="showTab('v',this)">Videos</button></div>
+  <div id="ppanel"><div class="gg" id="pg"></div><p class="ghint" id="phint">Add GitHub raw image URLs to CONFIG photos array to display here</p></div>
+  <div id="vpanel" class="hidden"><div class="vg" id="vg"></div><p class="ghint" id="vhint">Add YouTube or video URLs to CONFIG videos array to display here</p></div>
+</section>
+
+<!-- PRESENTATIONS -->
+<section id="presentations">
+  <div class="sh reveal"><span class="se">Resources</span><h2 class="st">Presentations</h2><div class="sr"></div></div>
+  <div class="pg" id="presGrid"></div>
+</section>
+
+<!-- SOCIAL -->
+<div id="social-sec">
+  <div class="sh reveal" style="margin-bottom:0"><span class="se">Connect</span><h2 class="st" style="font-size:1.45rem">Social Media</h2></div>
+  <div class="srow reveal" id="srow"></div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sh reveal"><span class="se">Get in Touch</span><h2 class="st">Contact</h2><div class="sr"></div></div>
+  <div class="cg">
+    <div class="ci reveal"><div class="cico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.5 11.74 19.79 19.79 0 01.46 3.07 2 2 0 012.44 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006 6l.75-.75a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="clabel">Phone / WhatsApp</div><div class="cval"><a href="https://wa.me/9779841537681" target="_blank">+977 9841537681</a></div></div></div>
+    <div class="ci reveal"><div class="cico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="clabel">Hospital Address</div><div class="cval"><a id="conml" href="#" target="_blank">Scheer Memorial Hospital<br>Banepa 45210, Nepal</a></div></div></div>
+    <div class="ci reveal"><div class="cico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><div class="clabel">Department</div><div class="cval">Radiology & X-Ray</div></div></div>
+    <div class="ci reveal"><div class="cico" style="color:var(--red-glow)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="clabel">ITF Role</div><div class="cval" style="color:var(--red-glow)">Secretary, Kavre ITF Academy</div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2025 <span>Tec. Arjun Pandey</span>. All Rights Reserved.</div>
+  <div class="fb2">X-RAY TECHNICIAN · ITF KAVRE SECRETARY</div>
+</footer>
+
+<script>
+/* ── Cursor ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+
+/* ── Loader ── */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),1900));
+
+/* ── Nav scroll ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60));
+
+/* ── Scroll reveal ── */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── BOOT from CONFIG ── */
+document.addEventListener('DOMContentLoaded',()=>{
+
+  /* Logo */
+  if(CONFIG.logo.trim()){
+    document.getElementById('nlogo').innerHTML=`<img src="${CONFIG.logo}" alt="Logo">`;
+  }
+
+  /* Profile photo */
+  if(CONFIG.profilePhoto.trim()){
+    const ph=document.getElementById('hph');
+    if(ph)ph.remove();
+    const img=document.createElement('img');
+    img.src=CONFIG.profilePhoto; img.alt='Tec. Arjun Pandey';
+    document.getElementById('hpa').appendChild(img);
+  }
+
+  /* Map */
+  const lat=CONFIG.hospitalLat, lng=CONFIG.hospitalLng;
+  document.getElementById('mapframe').src=`https://maps.google.com/maps?q=${lat},${lng}&z=16&output=embed`;
+  document.getElementById('dlat').textContent=lat;
+  document.getElementById('dlng').textContent=lng;
+  const ml=`https://www.google.com/maps?q=${lat},${lng}`;
+  document.getElementById('mlink').href=ml;
+  document.getElementById('conml').href=ml;
+
+  /* Photos */
+  const pg=document.getElementById('pg');
+  const vp=CONFIG.photos.filter(u=>u.trim());
+  if(vp.length){ document.getElementById('phint').style.display='none'; }
+  const slots=vp.length||6;
+  for(let i=0;i<slots;i++){
+    const d=document.createElement('div'); d.className='gi';
+    if(vp[i]){
+      d.innerHTML=`<img src="${vp[i]}" alt="Photo ${i+1}" loading="lazy"><div class="gov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,.8)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>`;
+      d.addEventListener('click',()=>lb(vp[i]));
+    } else {
+      d.innerHTML=`<div class="gempty"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Photo ${i+1}</span></div>`;
+    }
+    pg.appendChild(d);
+  }
+
+  /* Videos */
+  const vg=document.getElementById('vg');
+  const vv=CONFIG.videos.filter(u=>u.trim());
+  if(vv.length){ document.getElementById('vhint').style.display='none'; }
+  const vslots=vv.length||3;
+  for(let i=0;i<vslots;i++){
+    const d=document.createElement('div'); d.className='vi';
+    if(vv[i]){
+      const ytId=ytid(vv[i]);
+      d.innerHTML=ytId
+        ?`<iframe src="https://www.youtube.com/embed/${ytId}" frameborder="0" allowfullscreen></iframe>`
+        :`<video src="${vv[i]}" controls></video>`;
+    } else {
+      d.innerHTML=`<div class="vempty"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Video ${i+1}</span></div>`;
+    }
+    vg.appendChild(d);
+  }
+
+  /* Presentations */
+  const presGrid=document.getElementById('presGrid');
+  CONFIG.presentations.forEach((p,i)=>{
+    const hasLink=p.link&&p.link.trim();
+    const d=document.createElement('div'); d.className='pc reveal';
+    d.innerHTML=`<div class="pn">${String(i+1).padStart(2,'0')}</div>
+      <div class="ptitle">${p.title}</div>
+      <div class="plw">${hasLink
+        ?`<a class="purl" href="${p.link}" target="_blank">${p.link}</a>
+           <a class="popen" href="${p.link}" target="_blank"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Open</a>`
+        :`<span class="pnl">Add link in CONFIG</span>`
+      }</div>`;
+    presGrid.appendChild(d);
+    obs.observe(d);
+  });
+
+  /* Social */
+  const srow=document.getElementById('srow');
+  [
+    {cls:'fb',name:'Facebook',link:CONFIG.facebook,
+     icon:`<svg width="25" height="25" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`},
+    {cls:'ig',name:'Instagram',link:CONFIG.instagram,
+     icon:`<svg width="25" height="25" viewBox="0 0 24 24"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig2)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`},
+    {cls:'tt',name:'TikTok',link:CONFIG.tiktok,
+     icon:`<svg width="25" height="25" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>`},
+  ].forEach(s=>{
+    const has=s.link&&s.link.trim();
+    const d=document.createElement('a');
+    d.className=`sc ${s.cls}`; d.href=has?s.link:'#';
+    if(has)d.target='_blank';
+    d.innerHTML=`${s.icon}<div class="sn">${s.name}</div>${has?`<div class="surl">${s.link.replace(/^https?:\/\//,'')}</div>`:`<div class="sph">Add link in CONFIG</div>`}`;
+    srow.appendChild(d);
+  });
+
+});
+
+/* ── Helpers ── */
+function showTab(t,btn){
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  document.getElementById('ppanel').classList.toggle('hidden',t!=='p');
+  document.getElementById('vpanel').classList.toggle('hidden',t!=='v');
+}
+function ytid(url){ const m=url.match(/(?:v=|youtu\.be\/)([^&?/]+)/); return m?m[1]:null; }
+function lb(src){
+  const d=document.createElement('div');
+  d.style.cssText='position:fixed;inset:0;background:rgba(6,9,16,.97);z-index:9000;display:flex;align-items:center;justify-content:center;cursor:pointer;';
+  d.innerHTML=`<img src="${src}" style="max-width:90vw;max-height:90vh;object-fit:contain;border:1px solid rgba(200,223,245,.08);">`;
+  d.addEventListener('click',()=>d.remove());
+  document.body.appendChild(d);
+}
+</script>
+</body>
+</html>
